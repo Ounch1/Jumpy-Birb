@@ -1,21 +1,42 @@
 using UnityEngine;
+using System.Collections;
 
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject objectToSpawn;
-    [Space]
     [SerializeField] private float spawnRate = 3f;
-    [SerializeField] private Transform spawnPos;
+    [Space]
+    [SerializeField] private float randomXOffset = 0;
+    [SerializeField] private float randomYOffset = 0.5f;
 
     private void Start()
     {
-        InvokeRepeating("SpawnObject", spawnRate, 0);
+        StartCoroutine(SpawnObjectCoroutine());
     }
+
     /// <summary>
-    /// Instantiates an object of choice at a defined position.
+    /// Coroutine to spawn objects repeatedly with a specified spawn rate.
+    /// </summary>
+    private IEnumerator SpawnObjectCoroutine()
+    {
+        // Spawn the first object immediately
+        SpawnObject();
+
+        while (true)
+        {
+            // Wait for spawnRate seconds before spawning the next object
+            yield return new WaitForSeconds(spawnRate);
+            SpawnObject();
+        }
+    }
+
+    /// <summary>
+    /// Instantiates an object of choice at the spawner's position.
     /// </summary>
     private void SpawnObject()
     {
-        Instantiate(gameObject, spawnPos.position, Quaternion.identity);
+        Instantiate(objectToSpawn, new Vector3(transform.position.x + Random.Range(-randomXOffset, randomXOffset), 
+                                               transform.position.y + Random.Range(-randomXOffset, randomXOffset), 
+                                               0), Quaternion.identity);
     }
 }
