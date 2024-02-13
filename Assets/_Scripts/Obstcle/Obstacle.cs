@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerMovement>())
         {
-            print("BOOOOOOM");
+            RoundManager.Instance.EndRound();
         }
     }
 }
