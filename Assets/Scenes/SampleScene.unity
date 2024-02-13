@@ -536,7 +536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &809906295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 6386485034814004095, guid: a1ee43efb54a6d6418ec6075e2c91231, type: 3}
-  repeatedSpawnEnabled: 0
+  repeatedSpawnEnabled: 1
   spawnRate: 2
   randomXOffset: 0
   randomYOffset: 4
