@@ -36,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
     private void SpawnObject()
     {
         Instantiate(objectToSpawn, new Vector3(transform.position.x + Random.Range(-randomXOffset, randomXOffset), 
-                                               transform.position.y + Random.Range(-randomYOffset, randomYOffset), 
+                                               transform.position.y + Random.Range(-randomXOffset, randomXOffset), 
                                                0), Quaternion.identity);
     }
 }
