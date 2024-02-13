@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 6386485034814004095, guid: a1ee43efb54a6d6418ec6075e2c91231, type: 3}
+  repeatedSpawnEnabled: 0
   spawnRate: 2
   randomXOffset: 0
   randomYOffset: 4
@@ -1063,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a873e4846bfaa4f89be6f790a44be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulseForce: 7
+  impulseForce: 15
 --- !u!50 &1394306976
 Rigidbody2D:
   serializedVersion: 4
@@ -1079,7 +1080,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
