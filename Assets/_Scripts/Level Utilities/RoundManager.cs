@@ -6,7 +6,6 @@ public class RoundManager : MonoBehaviour
     public static RoundManager Instance => instance;
 
     [SerializeField] private ObjectSpawner obstacleSpawner;
-    [SerializeField] private Rigidbody2D playerRb;
     [Space]
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject mainMenu;
@@ -23,11 +22,8 @@ public class RoundManager : MonoBehaviour
         {
             instance = this;
         }
-    }
 
-    private void Start()
-    {
-        playerRb.isKinematic = true;
+        Time.timeScale = 0f; // Stop the game at the start
     }
 
     private void Update()
@@ -46,7 +42,7 @@ public class RoundManager : MonoBehaviour
     /// </summary>
     public void StartRound()
     {
-        playerRb.isKinematic = false;
+        Time.timeScale = 1f; // Start the game
         obstacleSpawner.gameObject.SetActive(true);
         mainMenu.SetActive(false);
     }
@@ -56,7 +52,7 @@ public class RoundManager : MonoBehaviour
     /// </summary>
     public void EndRound()
     {
-        playerRb.isKinematic = true;
+        Time.timeScale = 0f; // Stop the game
         obstacleSpawner.gameObject.SetActive(false);
         gameOverMenu.SetActive(true);
     }

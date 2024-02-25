@@ -25,7 +25,10 @@ public class ScoreManager : MonoBehaviour
             return instance;
         }
     }
-    private ScoreManager() { }
+    private ScoreManager()
+    {
+        OnScoreUpdate = new UnityEvent();
+    }
 
 
     private int currentScore = 0;
