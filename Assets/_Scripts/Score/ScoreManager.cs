@@ -1,18 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+/// <summary>
+/// Singleton class created to manage the player's score and high score.
+/// </summary>
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static ScoreManager instance;
+
+    public static ScoreManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<ScoreManager>();
+
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject("ScoreManager");
+                    instance = obj.AddComponent<ScoreManager>();
+                }
+            }
+            return instance;
+        }
+    }
+    private ScoreManager() { }
+
+
+    private int currentScore = 0;
+    public int CurrentScore => currentScore;
+    private int highScore = 0;
+    public int HighScore => highScore;
+
+    public UnityEvent OnScoreUpdate; // Invoked whenever the score is updated
+
+    private void Awake()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Adds the specified score to the current score and updates the high score if necessary.
+    /// </summary>
+    public void AddScore(int score)
     {
-        
+        currentScore += score;
+
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
+        OnScoreUpdate?.Invoke();
     }
 }
