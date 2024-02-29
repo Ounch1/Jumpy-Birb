@@ -1205,7 +1205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press <Space> or <RMB> to start
+  m_Text: Press <Space> or <LMB> to start
 --- !u!222 &781150863
 CanvasRenderer:
   m_ObjectHideFlags: 0
