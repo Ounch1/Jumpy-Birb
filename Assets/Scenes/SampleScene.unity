@@ -203,6 +203,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147398592}
   m_CullTransparentMesh: 1
+--- !u!1 &168813553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168813554}
+  - component: {fileID: 168813555}
+  m_Layer: 0
+  m_Name: Difficulty Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168813554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168813553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 383458182}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &168813555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168813553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad9f1c2dd446e44788dd695d23e26c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 809906295}
+  easySetting: {fileID: 11400000, guid: e4afa94b2bed3c54788b0293f2204a7f, type: 2}
+  mediumSetting: {fileID: 11400000, guid: 9ffaf0b8bbdb1a94c8ac8e975eda5444, type: 2}
+  hardSetting: {fileID: 11400000, guid: 7e16860369337784287668efbed1f3e5, type: 2}
 --- !u!1 &222356264
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +376,7 @@ Transform:
   - {fileID: 544429998}
   - {fileID: 1042423945}
   - {fileID: 809906296}
+  - {fileID: 168813554}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1031,9 +1080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 6386485034814004095, guid: a1ee43efb54a6d6418ec6075e2c91231, type: 3}
   repeatedSpawnEnabled: 1
-  spawnRate: 2
-  randomXOffset: 0
-  randomYOffset: 4
+  spawnSettings: {fileID: 11400000, guid: 9ffaf0b8bbdb1a94c8ac8e975eda5444, type: 2}
 --- !u!4 &809906296
 Transform:
   m_ObjectHideFlags: 0
@@ -2318,6 +2365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad9f1c2dd446e44788dd695d23e26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  easySetting: {fileID: 0}
+  mediumSetting: {fileID: 0}
+  hardSetting: {fileID: 0}
 --- !u!1 &2125451940
 GameObject:
   m_ObjectHideFlags: 0

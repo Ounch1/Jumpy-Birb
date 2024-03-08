@@ -5,14 +5,19 @@ public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject objectToSpawn;
     [SerializeField] private bool repeatedSpawnEnabled = false;
-    [SerializeField] private float spawnRate = 3f;
-    [Space]
-    [SerializeField] private float randomXOffset = 0;
-    [SerializeField] private float randomYOffset = 0.5f;
+    [SerializeField] private SpawnSetting spawnSettings;
 
     private void Awake()
     {
         StartCoroutine(SpawnObjectCoroutine());
+    }
+
+    /// <summary>
+    /// Setter method to change spawn settings, can be used to adjust difficulty.
+    /// </summary>
+    public void SetSpawnSettings(SpawnSetting settings)
+    {
+        spawnSettings = settings;
     }
 
     /// <summary>
@@ -26,7 +31,7 @@ public class ObjectSpawner : MonoBehaviour
         while (true && repeatedSpawnEnabled)
         {
             // Wait for spawnRate seconds before spawning the next object
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForSeconds(spawnSettings.spawnRate);
             SpawnObject();
         }
     }
@@ -36,8 +41,8 @@ public class ObjectSpawner : MonoBehaviour
     /// </summary>
     public void SpawnObject()
     {
-        Instantiate(objectToSpawn, new Vector3(transform.position.x + Random.Range(-randomXOffset, randomXOffset), 
-                                               transform.position.y + Random.Range(-randomYOffset, randomYOffset), 
+        Instantiate(objectToSpawn, new Vector3(transform.position.x + Random.Range(-spawnSettings.randomXOffset, spawnSettings.randomXOffset), 
+                                               transform.position.y + Random.Range(-spawnSettings.randomYOffset, spawnSettings.randomYOffset), 
                                                0), Quaternion.identity);
     }
 }
