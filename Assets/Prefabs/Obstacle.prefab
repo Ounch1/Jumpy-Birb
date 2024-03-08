@@ -417,6 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: -1, y: 0, z: 0}
   speed: 5
+  destroyPositionX: -20
 --- !u!1 &7157846567119425201
 GameObject:
   m_ObjectHideFlags: 0
