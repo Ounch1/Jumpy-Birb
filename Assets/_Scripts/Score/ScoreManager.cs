@@ -38,9 +38,23 @@ public class ScoreManager : MonoBehaviour
 
     public UnityEvent OnScoreUpdate; // Invoked whenever the score is updated
 
-    private void Awake()
+    DifficultyController diffController;
+
+    private void Start()
     {
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        diffController = DifficultyController.Instance;
+        highScore = PlayerPrefs.GetInt(diffController.GetCurrentSetting().name, 0);
+        diffController.OnDifficultyUpdate.AddListener(UpdateHighScore);
+        UpdateHighScore();
+    }
+
+    /// <summary>
+    /// Update when switching difficulty.
+    /// </summary>
+    private void UpdateHighScore()
+    {
+        highScore = PlayerPrefs.GetInt(diffController.GetCurrentSetting().name, 0);
+        OnScoreUpdate?.Invoke();
     }
 
     /// <summary>
@@ -53,7 +67,7 @@ public class ScoreManager : MonoBehaviour
         if (currentScore > highScore)
         {
             highScore = currentScore;
-            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.SetInt(diffController.GetCurrentSetting().name, highScore);
             PlayerPrefs.Save();
         }
 

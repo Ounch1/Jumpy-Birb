@@ -12,7 +12,9 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
 
     private bool roundStarted = false;
+    public bool RoundStarted => roundStarted;
     private bool roundEnded = false;
+    public bool RoundEnded => roundEnded;
 
     private void Awake()
     {
