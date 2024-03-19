@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -11,6 +12,9 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
 
     private bool roundStarted = false;
+    public bool RoundStarted => roundStarted;
+    private bool roundEnded = false;
+    public bool RoundEnded => roundEnded;
 
     private void Awake()
     {
@@ -28,12 +32,14 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (roundStarted) return; // If the round has already started, don't check for input
-
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space) && !roundStarted || Input.GetKeyDown(KeyCode.Mouse0) && !roundStarted)
         {
             StartRound();
-            roundStarted = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && roundEnded || Input.GetKeyDown(KeyCode.Mouse0) && roundEnded)
+        {
+            RestartRound();
         }
     }
 
@@ -45,16 +51,19 @@ public class RoundManager : MonoBehaviour
         Time.timeScale = 1f; // Start the game
         obstacleSpawner.gameObject.SetActive(true);
         mainMenu.SetActive(false);
+        roundStarted = true;
     }
 
     /// <summary>
-    /// Disable the player movement and the obstacle spawner
+    /// Disable the player movement and the obstacle spawner, allow restart
     /// </summary>
-    public void EndRound()
+    public IEnumerator EndRound()
     {
         Time.timeScale = 0f; // Stop the game
         obstacleSpawner.gameObject.SetActive(false);
         gameOverMenu.SetActive(true);
+        yield return new WaitForSecondsRealtime(0.5f); // Wait before allowing the player to restart the round, to prevent a missclick.
+        roundEnded = true;
     }
 
     /// <summary>
@@ -66,4 +75,5 @@ public class RoundManager : MonoBehaviour
     }
 
     // hello
+    // hi
 }

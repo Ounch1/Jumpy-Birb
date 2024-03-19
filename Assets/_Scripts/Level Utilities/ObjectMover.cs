@@ -4,10 +4,12 @@ public class ObjectMover : MonoBehaviour
 {
     [SerializeField] private Vector3 direction;
     [SerializeField] private float speed;
+    [SerializeField] private float destroyPositionX;
 
     private void Update()
     {
         Move();
+        DestroyObject();
     }
 
     /// <summary>
@@ -16,5 +18,16 @@ public class ObjectMover : MonoBehaviour
     private void Move()
     {
         transform.position += direction * speed * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Destroy the object when it moves off the scene.
+    /// </summary>
+    private void DestroyObject()
+    {
+            if(transform.position.x < destroyPositionX)
+        {
+            Destroy(gameObject);
+        }
     }
 }
