@@ -10,7 +10,7 @@ using UnityEngine;
 /// 
 public class PlayerController : MonoBehaviour
 { 
-    //[SerializeField] private AudioClip audioClip; // Example
+    [SerializeField] private AudioClip audioClip; // Example
     private PlayerMovement pm;
 
     // Start is called before the first frame update
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             pm.Jump();
+            SoundManager.Instance.PlaySound(audioClip); // Example
         }
     }
 }

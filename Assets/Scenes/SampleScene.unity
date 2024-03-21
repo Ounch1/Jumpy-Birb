@@ -2021,6 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ed4951d581b674f9ce362fcaa4966d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: b7a279c293cb54d8592371d0a23b8483, type: 3}
 --- !u!114 &1394306975
 MonoBehaviour:
   m_ObjectHideFlags: 0
