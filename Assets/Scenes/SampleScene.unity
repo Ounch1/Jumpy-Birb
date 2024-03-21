@@ -1192,7 +1192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4d585fc054bfb4db6031547f4ab14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 6386485034814004095, guid: a1ee43efb54a6d6418ec6075e2c91231, type: 3}
+  objectToSpawn: {fileID: 198153081189703140, guid: a1ee43efb54a6d6418ec6075e2c91231, type: 3}
   repeatedSpawnEnabled: 1
   spawnSettings: {fileID: 11400000, guid: 9ffaf0b8bbdb1a94c8ac8e975eda5444, type: 2}
 --- !u!4 &809906296
@@ -1405,7 +1405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -231.49638, y: 295.64423}
+  m_AnchoredPosition: {x: -231.4964, y: 218}
   m_SizeDelta: {x: 73.828705, y: -353.6239}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1018706490
@@ -2021,6 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ed4951d581b674f9ce362fcaa4966d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: 61dabcd42e7bfe342a82dfd1e5008ca9, type: 3}
 --- !u!114 &1394306975
 MonoBehaviour:
   m_ObjectHideFlags: 0
