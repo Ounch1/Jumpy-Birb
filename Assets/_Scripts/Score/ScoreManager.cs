@@ -62,8 +62,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void AddScore(int score)
     {
-        currentScore += score;
-
+         currentScore += score*100;  
+        
         if (currentScore > highScore)
         {
             highScore = currentScore;
