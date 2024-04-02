@@ -2862,9 +2862,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 809906295}
-  easySetting: {fileID: 11400000, guid: e4afa94b2bed3c54788b0293f2204a7f, type: 2}
-  mediumSetting: {fileID: 11400000, guid: 9ffaf0b8bbdb1a94c8ac8e975eda5444, type: 2}
-  hardSetting: {fileID: 11400000, guid: 7e16860369337784287668efbed1f3e5, type: 2}
+  spawnSettings:
+  - {fileID: 11400000, guid: e4afa94b2bed3c54788b0293f2204a7f, type: 2}
+  - {fileID: 11400000, guid: 9ffaf0b8bbdb1a94c8ac8e975eda5444, type: 2}
+  - {fileID: 11400000, guid: 7e16860369337784287668efbed1f3e5, type: 2}
   OnDifficultyUpdate:
     m_PersistentCalls:
       m_Calls: []
