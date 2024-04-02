@@ -19,6 +19,6 @@ public class DifficultyDisplay : MonoBehaviour
 
     private void UpdateDifficultyText()
     {
-        text.text = "Current Difficulty: " + diffController.GetCurrentSetting().name;
+        text.text = "Choose difficulty(1-3)\nCurrent Difficulty: " + diffController.GetCurrentSetting().name;
     }
 }
