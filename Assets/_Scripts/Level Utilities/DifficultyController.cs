@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Controls the difficulty setting of the game. Can be switched with the number keys. The setting is saved between the game sessions.
+/// </summary>
 public class DifficultyController : MonoBehaviour
 {
     private static DifficultyController instance;
@@ -30,17 +33,15 @@ public class DifficultyController : MonoBehaviour
 
     [SerializeField] ObjectSpawner spawner;
     [Space]
-    [SerializeField] private SpawnSetting easySetting;
-    [SerializeField] private SpawnSetting mediumSetting;
-    [SerializeField] private SpawnSetting hardSetting;
+    [SerializeField] private SpawnSetting[] spawnSettings;
+
     private SpawnSetting currentSetting;
     public SpawnSetting GetCurrentSetting() { return currentSetting; }
     public UnityEvent OnDifficultyUpdate;
 
     private void Awake()
     {
-        currentSetting = easySetting; // Default to easy
-        spawner.SetSpawnSettings(currentSetting);
+        SwitchDifficulty(LoadDifficulty()); // Set initial difficulty getting difficulty ID from PlayerPrefs. Defaults to 0 if no ID's were found.
     }
     void Update()
     {
@@ -48,28 +49,55 @@ public class DifficultyController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SwitchDifficulty(easySetting);
+            SwitchDifficulty(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SwitchDifficulty(mediumSetting);
+            SwitchDifficulty(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SwitchDifficulty(hardSetting);
+            SwitchDifficulty(2);
         }
     }
 
-    private void SwitchDifficulty(SpawnSetting setting)
+    /// <summary>
+    /// Switches the difficulty setting to the one specified by the setting ID.
+    /// </summary>
+    /// <param name="settingID">The ID of the difficulty setting to switch to.</param>
+    private void SwitchDifficulty(int settingID)
     {
-        if (setting != null)
+        if (spawnSettings[settingID] != null)
         {
-            currentSetting = setting;
-            spawner.SetSpawnSettings(setting);
+            currentSetting = spawnSettings[settingID];
+            spawner.SetSpawnSettings(currentSetting);
+            SaveDifficulty(settingID);
             OnDifficultyUpdate?.Invoke();
-            print("Switched difficulty to " + setting.name);
+            print("Switched difficulty to " + spawnSettings[settingID].name);
         }
+        else
+        {
+            print("Invalid difficulty setting.");
+        }
+    }
+
+    /// <summary>
+    /// Saves the current difficulty setting to PlayerPrefs.
+    /// </summary>
+    /// <param name="settingID">The ID of the current difficulty setting.</param>
+    private void SaveDifficulty(int settingID)
+    {
+        PlayerPrefs.SetInt("Difficulty", settingID);
+    }
+
+    /// <summary>
+    /// Loads the difficulty setting from PlayerPrefs.
+    /// </summary>
+    /// <returns>The ID of the loaded difficulty setting.</returns>
+    private int LoadDifficulty()
+    { 
+        return PlayerPrefs.GetInt("Difficulty", 0);
     }
 }
