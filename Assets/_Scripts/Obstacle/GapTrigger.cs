@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 
 /// <summary>
 /// A class representing a trigger between two pillars, which player is supposed to go through.
